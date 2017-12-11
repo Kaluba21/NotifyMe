@@ -32,7 +32,7 @@ if($check_duplicates->num_rows == 0){
 	$result = $mysqli->query("insert into F.login values (NULL, $mysqli->real_escape_string($username),$mysqli->real_escape_string($password))");
 	
 }
-}
+
 
 
 
