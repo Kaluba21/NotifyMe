@@ -1,0 +1,45 @@
+NotifyMe Schema
+
+Table F.Classes
+	c_id:  This is the primary key, a unique id for the class; int(4)
+	name:  This is the full name of the class; text
+	comp_num:  This is the course number (i.e. COMP ###-###); text
+	time_id:  This is a foreign key that refers to the F.Time table; matches the class time and exam time; int(4)
+
+
+Table F.login
+	id:  This is the primary key, a unique id generated for each user; int(4)
+	f_name:  This is the user's first name; text
+	l_name:  This is the user's last name; text
+	user:  This is the username used for this user; text
+	pass:  This is the password used for this user; text
+
+
+Table F.Notifications
+	user:  This is a foreign key, referencing the id of the user; int(4)
+	class:  This is a foreign key, referencing the id of the class; int(4)
+	notify:  This is a boolean, TRUE if the user wants to be notified, FALSE otherwise
+	time:  This is a date-time field, where a user can set what time and day they want to be notified about their exam
+	calendar:  This is a boolean, TRUE if the user wants the class to be shown on the calendar, FALSE otherwise
+	em_txt:  This declares whether a student wants to be notified via text or email; text
+
+
+Table F.People
+	p_id:  This is a primary key and a foreign key, referencing the id of the user; int(4)
+	p_pic:  This is the url of the picture attached to the user profile; text
+	c_1:  This is the id of a class: int(4)
+	c_2:  This is the id of a class: int(4)
+	c_3:  This is the id of a class: int(4)
+	c_4:  This is the id of a class: int(4)
+	c_5:  This is the id of a class: int(4)
+	c_6:  This is the id of a class: int(4)
+	phone:  This is a user's phone number; int(10)
+	email:  This is a user's email; text
+
+
+Table F.Time
+	time_id:  This is the primary key, a unique id; int(4)
+	c_time:  This is a time that a class could be offered
+	c_days:  This is a day/days a class could be offered; format varchar(3) ex. MW or TTH
+	e_time:  This is the time that the exam is for the corresponding classes
+	e_date:  This is the date that the exam is offerred for the corresponding classes
