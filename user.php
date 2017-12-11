@@ -17,7 +17,7 @@ $username = $POST['Username'];
 $password = $POST['Password'];
 $password = md5($password);
 
-
+echo "hello";
 $check_duplicates = mysqli_query($conn, "SELECT 1 FROM F.login WHERE user = '$username'";);  
 
 if(!$check_duplicates){
