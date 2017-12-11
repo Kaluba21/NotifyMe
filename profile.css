@@ -1,0 +1,74 @@
+#profileInfo{
+	float: left;
+	
+}
+
+body{
+	background-image: url("Snow2.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: top-left;
+	
+}
+
+.contentBox{
+	width:45%;
+	min-width: 350px;
+	margin: 5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #004e69;
+	margin: 25px;
+	background: rgba(255,255,255, 0.6);
+}
+#profilePic img{
+	margin: 5px;
+	border-width: 7px;
+	border-style: solid;
+	border-color: #008aaf;
+	float: left;
+}
+
+#display{
+	clear: none;
+	float: left;
+	
+}
+
+#profileTitle p{
+	float: left;	
+}
+
+div.text p{
+	font-size: 50px;
+	color: white;
+	font-weight: bold;
+	opacity: 1.0;
+	margin: 20px;	
+}
+
+
+div.header{
+	width: 100%;
+	height: 100px;
+	background: rgba(0, 78, 105, 0.6);
+}
+
+#actionButtons{
+	margin: 5px;
+}
+
+button{
+	margin:2px;
+}
+
+#name{
+	font-size:40px;	
+}
+
+#content{
+	background-color: #008aaf ;	
+	min-height: 600px;	
+}
