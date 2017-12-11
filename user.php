@@ -1,5 +1,5 @@
 <?php
-
+echo "hello";
 $servername = "classroom.cs.unc.edu";
 $username = "carriems"
 $password = "CH@ngemenow99Please!carriems"
