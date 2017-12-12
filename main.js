@@ -14,4 +14,19 @@ $(document).ready(function(){
             }
         });
     });
+    $("#SignInForm").on("submit", function(e){
+        e.stopPropagation(); 
+        e.preventDefault(); 
+        $.ajax({
+            type: "post",
+            url: "login.php", 
+            data: $("#SignInForm").serialize(), 
+            error: function(){
+                alert("Login Failed. Please try again.");
+            }, 
+            success: function(){
+                alert("Login Successful!");
+            }
+        }); 
+    }); 
 })
