@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <script src="jquery-3.2.1.js"></script>
+        <script src="main.js"></script>>
         <link rel="stylesheet" type="text/css" href="main.css">
         <title>NotifyMe!</title>
     </head>
@@ -16,10 +17,14 @@
         <div id="userInput">
         <div id="signUp" class="signInUp">
             <text>New? Sign Up Now!</text>
-            <div class="box">
-                <form action ="user.php" method="post"> <!--insert file that will update database as part of action attribute -->
+            <div class="tallbox">
+                <form id = "NewUserForm" method="post"> <!--insert file that will update database as part of action attribute -->
                     Username: <input type="text" name="Username" value="" maxlength="15"><br>
-                    Password: <input type="password" name="Password" value="" maxlength="15"><br><br>
+                    Password: <input type="password" name="Password" value="" maxlength="15"><br>
+                    First Name: <input type="text" name="Firstname" value = "" maxlength="15"><br>
+                    Last Name: <input type="text" name="Lastname" value = "" maxlength="15"><br>
+                    Email: <input type="text" name="email" value = "" maxlength="45"><br>
+                    Phone: <input type="text" name="phone" value = "" maxlength="15"><br><br>
                     <input type="submit" value="Sign Up">
                 </form>
             </div>

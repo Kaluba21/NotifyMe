@@ -16,9 +16,16 @@ body{
     text-align: center; 
 }
 
+.tallbox{
+    border: 2px solid black; 
+    width: 200px; 
+    height: 280px; 
+    text-align: center; 
+}
+
 #center{
     width: 600px; 
-    height: 350px;
+    height: 455px;
     left: 30%; 
     position: absolute; 
     top: 30%; 
