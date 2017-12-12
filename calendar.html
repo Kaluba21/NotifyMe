@@ -1,0 +1,120 @@
+<!DOCTYPE hmtl>
+
+<html lang="en">
+    <head>
+        <script src="jquery-3.2.1.js"></script>
+        <script src = "calendar.js"></script>
+        <link rel="stylesheet" type="text/css" href="calendar.css">
+        <title>NotifyMe!</title>
+    </head>
+    
+    
+    <body>
+        
+        <table id = "calendar">
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            <tr>
+                <td class = "date">11</td>
+                <td class = "date">12</td>
+                <td class = "date">13</td>
+                <td class = "date">14</td>
+                <td class = "date">15</td>
+                <td class = "date">16</td>
+                <td class = "date">17</td>
+            </tr>
+            <tr>
+                <td class = "date">18</td>
+                <td class = "date">19</td>
+                <td class = "date">20</td>
+                <td class = "date">21</td>
+                <td class = "date">22</td>
+                <td class = "date">23</td>
+                <td class = "date">24</td>
+            </tr>
+        </table>
+        
+        <div id = "bottomTwoTables">
+        <table id = "ClassList">
+            <tr>
+                <th>My Classes</th>
+                <th>Preset Notifications</th>
+            </tr>
+            <tr>
+                <td>
+                    <div id = "classes">
+                        <input type = "checkbox" name = "Class1" value = "Class1">Placeholder Class<br>
+                        <input type = "checkbox" name = "Class2" value = "Class2">Placeholder Class<br>
+                        <input type = "checkbox" name = "Class3" value = "Class3">Placeholder Class<br>
+                        <input type = "checkbox" name = "Class4" value = "Class4">Placeholder Class<br>
+                        <input type = "checkbox" name = "Class5" value = "Class5">Placeholder Class<br>
+                    </div>
+                </td>
+                <td>
+                    <div id = "notifications">
+                        <div id = "phone_notifications">
+                            <text>Phone:</text>
+                            <ul>
+                                <li>Class 1</li>
+                                <li>Class 2</li>
+                                <li>Class 3</li>
+                            </ul>
+                        </div>
+                        <div id = "email_notifications">
+                            <text>Email:</text>
+                            <ul>
+                                <li>Class 3</li>
+                                <li>Class 4</li>
+                                <li>Class 5</li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id = "classoptions">
+                        <input type = "button" name = "SelectAll" value = "Select All" id = "SelectAllBtn">
+                        <input type = "button" name = "RemoveClass" value = "Remove Class">
+                        <input type = "button" name = "AddClass" value = "Add Class">
+                    </div>
+                </td>
+                <td class = "BtnCenter">
+                    <input type = "button" name = "EditNotifications" value = "Edit Notifications">
+                </td>
+            </tr>
+        </table>
+            
+        <table id = "studyGroups">
+            <tr>
+                <th>My Study Groups</th>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <ul class = "stdtable">
+                            <li>Study Group 1</li>
+                            <li>Study Group 2</li>
+                            <li>Study Group 3</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class = "BtnCenter">
+                    <input type = "button" name = "MakeStdGroupBtn" value = "Make Study Group">
+                </td>
+            </tr>
+        </table>
+        </div>
+        
+    </body>
+    
+</html>

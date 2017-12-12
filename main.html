@@ -17,7 +17,7 @@
         <div id="signUp" class="signInUp">
             <text>New? Sign Up Now!</text>
             <div class="box">
-                <form action ="user.php" method="POST"> <!--insert file that will update database as part of action attribute -->
+                <form action ="user.php" method="post"> <!--insert file that will update database as part of action attribute -->
                     Username: <input type="text" name="Username" value="" maxlength="15"><br>
                     Password: <input type="password" name="Password" value="" maxlength="15"><br><br>
                     <input type="submit" value="Sign Up">
@@ -28,7 +28,7 @@
         <div id = "signIn" class="signInUp">
             <text>Already a member? Sign In</text>
             <div class="box">
-                <form> <!--insert file that will update database as part of action attribute -->
+                <form id = "SignInForm"> <!--insert file that will update database as part of action attribute -->
                     Username: <input type="text" name="Username" value="" maxlength="15"><br>
                     Password: <input type="password" name="Password" value="" maxlength="15"><br><br>
                     <input type="submit" value="Sign In">
