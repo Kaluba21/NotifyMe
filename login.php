@@ -8,7 +8,7 @@ function ValidateUser($u, $p){
 
         $conn = new mysqli($servername, $username, $password, $database);
 
-        $check_user = mysqli_query($conn, "SELECT 1 FROM `F.login` WHERE `user` = '$u' AND `pass` = '$p'");
+        $check_user = mysqli_query($conn, "SELECT 1 FROM `F.User` WHERE `user` = '$u' AND `pass` = '$p'");
 
         if($check_user->num_rows == 0){
                 return false;
