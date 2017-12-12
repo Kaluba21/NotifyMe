@@ -16,20 +16,39 @@ else {
 $username = $_POST['Username'];
 $password = $_POST['Password'];
 $password = md5($password);
+$F_name = $_POST['Firstname'];
+$L_name = $_POST['Lastname'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
 
-$check_duplicates = mysqli_query($conn, "SELECT 1 FROM `F.login` WHERE `user` = '$username'");
+if(!isset($username) || !isset($password)){
+        echo "Failed";
+        header('HTTP/1.1 401 Unauthorized');
+        header('Content-type: application/json');
+        print(json_encode(false));
+        die("Username and/or password POST Failed");
+}
+
+$check_duplicates = mysqli_query($conn, "SELECT 1 FROM `F.User` WHERE `user` = '$username'");
 
 if(!$check_duplicates){
-        echo "Error: " . mysqli_error($conn);
+        die("Error: " . mysqli_error($conn));
 }
 
 else {
 
         if($check_duplicates->num_rows == 0){
-                $insert_new_user = mysqli_query($conn, "INSERT INTO `F.login` VALUES(NULL, '$username', '$password')");
+                $insert_new_user = mysqli_query($conn, "INSERT INTO `F.User` VALUES(NULL, '$F_name', '$L_name', '$username', '$password', '$email', '$phone')");
                 if(!$insert_new_user){
-                        echo "Error: " . mysqli_error($conn);
+                        die("Error: " . mysqli_error($conn));
                 }
+                header('Content-type: application/json');
+                print(json_encode(true));
+        }
+        else {
+                header('HTTP/1.1 401 Unauthorized');
+                header('Content-type: application/json');
+                print(json_encode(false));
         }
 
 }
@@ -39,4 +58,3 @@ else {
 $conn->close();
 
 ?>
-
