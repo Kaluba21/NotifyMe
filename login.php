@@ -23,6 +23,8 @@ $password = $_POST['Password'];
 $password = md5($password);
 
 if(ValidateUser($username, $password)){
+		session_start();
+		$_SESSION['user'] = $username;
         setcookie("USER_LOGGEDIN", $username, time() + 60, "/");
         header('Content-type: application/json');
         print(json_encode(true));

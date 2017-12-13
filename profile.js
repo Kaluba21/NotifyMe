@@ -1,5 +1,25 @@
 $(document).ready(function (){
 	
+	
+	var head = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject/";
+	
+	$.ajax(head + "profile.php",
+		{type: "GET",
+		dataType: "json", 
+		success: function(user_json){
+			var u = new UserProfile(user_json);
+			$('#name').empty();
+			$('#name').append(u.f_name + " " + u.l_name);
+		},
+		error: function(user_json){
+			alert("Failed to load names");
+		}
+	}
+		);	
+	
+	
+	
+	
 	$("form").on('submit', function(e){
 		e.preventDefault();		
 		var name = e.target.inputName.value;
