@@ -9,8 +9,6 @@ $(document).ready(function(){
     else {
         var newSession = new Session();
     }
-
-    var newSession = new Session();
 })
 
 var Session = function(){
