@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8"> 		
 		<title> Comp 426 Final Project Profile </title>
-				<script src="jquery-3.2.1.js"></script>
+				<script src="jquery-3.2.1.js"></script>	
 		<link rel="stylesheet" type="text/css" href="profile.css" >
 		<script src ="profile.js"></script>
 		<script src ="user.js"></script>
@@ -17,7 +17,8 @@
 			</div>
 		
 			<div id ="calendarLink">
-				a link to your calendar 
+				<li><a href="https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/calendar.html"> Calendar Page</a></li>
+				
 			</div>
 			
 		</div>
@@ -45,12 +46,19 @@
 		
 			<div id="actionButtons">
 		
-			<div id="addClass">
-				<button type="button" id="addClassButton"> Add Class </button>
+		<div id="addClass">
+				<form id = "NewClass" method = "post">
+				Add Class:  <input type = "text" name = "newClass" value = "">
+				<input type = "submit" value= "Add Class" >
+				</form>
 			</div>
-		
+			
+			
 			<div id="deleteClass">
-				<button type="button" id ="deleteClassButton"> Delete Class </button>
+					<form id = "DeleteClass" method = " ">
+				Delete Class:  <input type = "text" name = "delClass" value = "">
+				<input type = "submit" value= "Delete Class" >
+				</form>
 			</div>
 		
 			<div id="addNotification">
@@ -65,7 +73,7 @@
 		</div>
 		
 		<div id="display" class ="contentBox">		
-			<div id="classList">
+			<div id="showClasses">
 				A list of your classes (classes to be notified will have a star)
 			</div>			
 		</div>	
