@@ -26,7 +26,10 @@ $(document).ready(function(){
             }, 
             success: function(){
                 alert("Login Successful!");
-            }
+				window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/profile.html ";
+          
+				alert("should change");
+			}
         }); 
     }); 
 })
