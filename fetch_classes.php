@@ -2,7 +2,7 @@
 
 $user = $_COOKIE['USER_LOGGEDIN'];
 
-echo "User: " . $user;
+
 
 $servername = "classroom.cs.unc.edu";
 $username = "carriems";
@@ -26,14 +26,16 @@ $user_id = $user_id['ID'];
 
 $class_list = mysqli_query($conn, "SELECT name FROM `F.EnrolledKeys` INNER JOIN `F.User` ON `F.EnrolledKeys`.`UserID` = `F.User`.`ID` INNER JOIN `F.Classes` ON `F.EnrolledKeys`.ClassID = `F.Classes`.c_id WHERE UserID = '$user_id'");
 
-$class_list = mysqli_fetch_all($class_list);
-echo json_encode($class_list);
+$classes = mysqli_fetch_all($class_list);
 
 
 header('Content-type: application/json');
-print(json_encode(true));
+print(json_encode($classes));
 
 
 }
 
+$conn->close();
+
 ?>
+
