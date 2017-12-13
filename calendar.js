@@ -15,6 +15,7 @@ $(document).ready(function(){
 var Session = function(){
     
     var classes = []; //all current classes stored here
+    var class_ids = []; //all class ID stored here
     
     
     this.start = function(){
@@ -40,6 +41,20 @@ var Session = function(){
     for(var i = 0; i < classes.length; i++){
         classes[i] = clean_string(classes[i]);
     }
+        
+    $.ajax("fetch_classids.php", {
+        type: "GET", 
+        async: false, 
+        dataType: "json", 
+        success: function(data){
+            for(var i = 0; i < data.length; i++){
+                class_ids.push(JSON.stringify(data[i])); 
+            }
+        }, 
+        error: function(){
+            alert("Error: Could not retrieve class IDs"); 
+        }
+    }); 
     ////////////////////////////////////////////////////////
 
     
@@ -50,9 +65,33 @@ var Session = function(){
     $(classes).each(function(){
         var box = $('<input type = "checkbox">' + this + '<br>');
         box.val(this); 
+        box.attr("id", this); 
         $(class_check_boxes).append(box); 
         
     }); 
+    ////////////////////////////////////////////////////////
+        
+    ///////////////////////FILL IN CALENDAR/////////////////
+    
+    $(class_ids).each(function(){
+        var id = clean_string(this);
+        $.ajax({
+            type: "POST", 
+            url: "fetch_times.php", 
+            async: false, 
+            dataType: "json", 
+            data: {ID: id},
+            success: function(data){
+                var c_n = getClassByID(id);
+                var c = clean_string(JSON.stringify(data));
+                var slot = $("<br><text>" + "<b>" + c[0] + c[1] + ":00</b><br>" + c_n + "</text><br>");
+                $("#"+c[17]+c[18]).append(slot);  
+            }, 
+            error: function(){
+                alert("Error: Failed to update calendar"); 
+            }
+        }); 
+    });    
         
         
         
@@ -91,8 +130,8 @@ var Session = function(){
             dataType: "json", 
             data: {Class: cl_name},
             success: function(data){
-                alert("Class was removed"); 
-                parent.empty(); 
+                alert("Class was removed");
+                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/jwash/final/calendar.html"; 
             }, 
             error: function(){
                 alert("Could not remove class"); 
@@ -100,9 +139,27 @@ var Session = function(){
         }); 
         });
     }
+        
+    function getClassByID(id){
+        var name = ""; 
+        $.ajax({
+            type: "POST", 
+            url: "fetch_oneclass.php", 
+            async: false, 
+            dataType: "json", 
+            data: {ID: id},
+            success: function(data){
+                name = clean_string(JSON.stringify(data));  
+            },
+            error: function(){
+                alert("ERROR: GETCLASSBYID-INVALID REQUEST"); 
+            }
+        });
+        return name; 
+    }
 
     function clean_string(string){
-        return string.replace("[","").replace("]", "").replace(/"/g, "");
+        return string.replace(/[\[\]]+/g, "").replace(/"/g, "");
     }
     }
 }
