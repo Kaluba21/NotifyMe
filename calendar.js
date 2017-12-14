@@ -16,6 +16,7 @@ var Session = function(){
     
     var classes = []; //all current classes stored here
     var class_ids = []; //all class ID stored here
+    var username = Cookies.get('USER_LOGGEDIN'); 
     
     
     this.start = function(){
@@ -100,7 +101,8 @@ var Session = function(){
     
     $("#SelectAllBtn").on("click", SelectAllClasses);
     $("#RemoveClassBtn").on("click", RemoveClass);
-    sendNotificationMail(); 
+    $("#StdyGroupBtn").on("click", GetSimilarUsers); 
+    NotifyUser(); 
     }    
 
     function SelectAllClasses(){
@@ -158,9 +160,63 @@ var Session = function(){
         });
         return name; 
     }
+        
+    /*function getIDbyName(name){
+        var ID = 0;  
+        $.ajax({
+            type: "POST", 
+            url: "fetch_oneclassID.php",
+            async: false, 
+            dataType: "json", 
+            data: {C_name: name},
+            success: function(data){
+                data = clean_string(JSON.stringify(data));  
+            }, 
+            error: function(){
+                alert("ERROR: Failed to get Class ID"); 
+            }
+        });
+        return ID; 
+    } */ 
 
     function clean_string(string){
         return string.replace(/[\[\]]+/g, "").replace(/"/g, "");
+    }
+        
+    function GetSimilarUsers(){
+        class_ID = "1218"; 
+        $.ajax({
+            type: "POST", 
+            url: "fetch_similar.php", 
+            async: true, 
+            dataType: "json", 
+            data: {Class: class_ID},
+            success: function(data){
+                $("#stdygroupslist").empty(); 
+                var user_array = clean_string(JSON.stringify(data)).split(","); 
+                $(user_array).each(function(){
+                    var list_el = $("<li>" + this + "</li><br>"); 
+                    $("#stdygroupslist").append(list_el); 
+                });  
+            }, 
+            error: function(){
+                alert("ERROR: Failed to load users"); 
+            }
+        }); 
+    }
+    
+    function NotifyUser(){
+        $.ajax({
+            type: "POST", 
+            url: "mail.php", 
+            async: true, 
+            success: function(){
+               setTimeout(NotifyUser, 1000 * 600);  
+            }, 
+            error: function(){
+                alert("Failed to send mail notification"); 
+            }
+        }); 
     }
     }
 }
