@@ -5,6 +5,7 @@
         <script src="jquery-3.2.1.js"></script>
         <script src = "calendar.js"></script>
         <script src = "js.cookie.js"></script>
+        <script src = "notify.js"></script>
         <link rel="stylesheet" type="text/css" href="calendar.css">
         <title>NotifyMe!</title>
     </head>
@@ -100,15 +101,15 @@
             <tr>
                 <td>
                     <div>
-                        <ul class = "stdtable">
-                            <li>No Study Groups</li>
+                        <ul class = "stdtable" id="stdygroupslist">
+                            <li>No Study Groups Selected</li>
                         </ul>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class = "BtnCenter">
-                    <input type = "button" name = "MakeStdGroupBtn" value = "Make Study Group">
+                    <input type = "button" name = "MakeStdGroupBtn" value = "Make Study Group" id = "StdyGroupBtn">
                 </td>
             </tr>
         </table>
