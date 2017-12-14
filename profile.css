@@ -2,6 +2,10 @@
 	float: left;
 	
 }
+#changeNameForm{	
+}
+#changeName{
+}
 
 body{
 	background-image: url("Snow2.jpg");
@@ -66,7 +70,6 @@ button{
 
 #name{
 	font-size:40px;	
-	float: right;
 }
 
 #content{

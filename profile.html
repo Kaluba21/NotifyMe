@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8"> 		
 		<title> Comp 426 Final Project Profile </title>
-				<script src="jquery-3.2.1.js"></script>	
+				<script src="jquery-3.2.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="profile.css" >
 		<script src ="profile.js"></script>
 		<script src ="user.js"></script>
@@ -17,8 +17,7 @@
 			</div>
 		
 			<div id ="calendarLink">
-				<li><a href="https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/calendar.html"> Calendar Page</a></li>
-				
+				a link to your calendar 
 			</div>
 			
 		</div>
@@ -28,37 +27,32 @@
 		<div id = "profileInfo" class="contentBox">
 		
 			<div id="profilePic">
-				<img src="Snow4.JPG" alt="Profile Picture" height="150px" width="150px" >
+				
 			</div>
 		
 			<div id="name">
-				
+				Name
 			</div>
 		
 			<div id="changeName">
-				<button type="button" id="changeNameButton"> Change Name </button>
+				<!-- <button type="button" id="changeNameButton"> Change Name </button> -->
 				
-			<!--	<form id="changeNameForm">
-					<input type="text" id="inputName">
+				<form id="changeNameForm">
+					Change Name: <br>
+					<input type="text" name="fname" id="fname">
+					<input type="text" name="lname" id="lname">
 					<input type="submit">
-				</form>			-->
-			</div>
+				</form>		
+			</div>		
 		
 			<div id="actionButtons">
 		
-		<div id="addClass">
-				<form id = "NewClass" method = "post">
-				Add Class:  <input type = "text" name = "newClass" value = "">
-				<input type = "submit" value= "Add Class" >
-				</form>
+			<div id="addClass">
+				<button type="button" id="addClassButton"> Add Class </button>
 			</div>
-			
-			
+		
 			<div id="deleteClass">
-					<form id = "DeleteClass" method = " ">
-				Delete Class:  <input type = "text" name = "delClass" value = "">
-				<input type = "submit" value= "Delete Class" >
-				</form>
+				<button type="button" id ="deleteClassButton"> Delete Class </button>
 			</div>
 		
 			<div id="addNotification">
@@ -70,10 +64,19 @@
 			</div>		
 			
 			</div>
+			<div id="changePic">
+			<form id="changePicForm">
+					Change Profile Picture! <br>
+					Add a link:  
+					<input type="text" name="newPic" id="newPic">
+					<input type="submit">
+				</form>		
+			
+			</div>
 		</div>
 		
 		<div id="display" class ="contentBox">		
-			<div id="showClasses">
+			<div id="classList">
 				A list of your classes (classes to be notified will have a star)
 			</div>			
 		</div>	
