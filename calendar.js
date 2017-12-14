@@ -99,7 +99,8 @@ var Session = function(){
         
     
     $("#SelectAllBtn").on("click", SelectAllClasses);
-    $("#RemoveClassBtn").on("click", RemoveClass); 
+    $("#RemoveClassBtn").on("click", RemoveClass);
+    sendNotificationMail(); 
     }    
 
     function SelectAllClasses(){
