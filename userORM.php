@@ -54,6 +54,58 @@ class User{
 		return $this->l_name;
 	}
 	
+	public function addNotification($class){
+		$conn = User::connect();
+				
+		$compNum = $conn->real_escape_string($class);		
+		
+		//$id = mysqi_query($conn, "SELECT `F.Classes`.c_id FROM `F.Classes` WHERE `F.Classes`.comp_num = '".$compNum."'");
+		$classid = mysqli_query($conn, "SELECT `F.Classes`.c_id FROM `F.Classes`, `F.EnrolledKeys` WHERE 
+		`F.Classes`.comp_num = '".$compNum."' AND `F.EnrolledKeys`.ClassID = `F.Classes`.c_id AND `F.EnrolledKeys`.UserID ='".$this->id."'");
+		if(!$classid){
+			die("Error");
+		}
+		if($classid->num_rows != 1){
+			die("Error");
+		}
+		
+		$classid = $classid->fetch_array();
+		
+		$result = mysqli_query($conn, "INSERT INTO `F.Notifications` (classID, userID) VALUES ('".$classid['c_id']."', '".$this->id."')");
+		if(!$result){
+			die("Error");
+		}		
+		
+	}
+	
+/*	public function findClasses(){
+		$conn = User::connect();
+		$result = mysqli_query($conn, "SELECT name, comp_num FROM `F.Classes`, `F.User`, `F.EnrolledKeys` WHERE 
+		`F.EnrolledKeys`.ClassID = `F.Classes`.c_id AND `F.User`.ID = `F.EnrolledKeys`.UserID AND `F.User`.ID = ".$id); 
+		if(!$result){
+			die("Error");
+		}else{
+			$conn->close();
+			return json_encode($result->fetch_array($result));
+		}
+		
+	}  */
+	
+/*	public function findNotified(){
+		$conn = User::connect();
+		
+		$result = mysqli_query($conn, "SELECT name, comp_num FROM `F.Classes`, `F.User`, `F.EnrolledKeys`, `F.Notifications` WHERE 
+		`F.EnrolledKeys`.ClassID = `F.Classes`.c_id AND `F.User`.ID = `F.EnrolledKeys`.UserID AND `F.Notifications`.classID = `F.EnrolledKeys`.ClassID 
+		AND `F.Notifications`.userID = `F.EnrolledKeys`.UserID AND `F.User`.ID =" $id);
+		
+		if(!$result){
+			die("Error");
+		}else{
+			$conn->close();
+			return json_encode($result->fetch_array($result));
+		}		
+	}  */
+	
 	public function getJSON(){
 		$json_obj = array('id' => $this-> id, 'f_name' => $this-> f_name, 
 			'l_name' => $this-> l_name, 'pic' => $this-> pic);			

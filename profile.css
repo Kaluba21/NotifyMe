@@ -2,9 +2,23 @@
 	float: left;
 	
 }
-#changeNameForm{	
+
+#addNotForm{
+	visibility: hidden;
 }
-#changeName{
+
+#addClass{
+	float:left;
+}
+#deletClass{
+	float:left;
+}
+#addNotification{
+	float:left;
+}
+
+#changePic{
+	clear: left;	
 }
 
 body{
@@ -27,6 +41,7 @@ body{
 	margin: 25px;
 	background: rgba(255,255,255, 0.6);
 }
+
 #profilePic img{
 	margin: 5px;
 	border-width: 7px;
@@ -37,8 +52,7 @@ body{
 
 #display{
 	clear: none;
-	float: left;
-	
+	float: left;	
 }
 
 #profileTitle p{
@@ -53,7 +67,6 @@ div.text p{
 	margin: 20px;	
 }
 
-
 div.header{
 	width: 100%;
 	height: 100px;
@@ -66,6 +79,9 @@ div.header{
 
 button{
 	margin:2px;
+	color: white;
+	background-color: #004e69;
+	border-color: #004e69;
 }
 
 #name{

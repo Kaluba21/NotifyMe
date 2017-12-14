@@ -30,6 +30,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
 		$user->changeName($userName, $fname, $lname);
 		header("Content-type: application/json");
 		print($user->getJSON());
+		}else if($path_components[1] == "addNot"){
+			$class = $_POST['addNot'];
+		$user->addNotification($class);
+		header("Content-type: application/json");
+		print($user->getJSON());	
 		}
 	}else{
 	

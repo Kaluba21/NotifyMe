@@ -23,9 +23,35 @@ $(document).ready(function (){
 		}
 	}
 		);	
+		
+	$("#addNotificationButton").on('click', function(e){
+			console.log("add button");
+			$("#addNotForm").css("visibility", "visible");
+	});
 	
-	
-	
+	$("#addNotForm").on('submit', function(e){
+		e.preventDefault();
+		console.log("add not. form");
+		
+		$.ajax(head + "profile.php" + "/addNot",
+		{type: "POST",
+		dataType: "json",
+		data: $(this).serialize(),
+		success: function(){
+			alert("Added Notification");
+		},
+		error: function(){
+			alert("Failed to Add Notification. Make sure you enter the name of a class that you are enroled in");
+		}
+	}			
+		);
+		
+		$("#addNotForm").css("visibility", "hidden");
+		
+	/*	$("#addNotification").empty();
+		$("#addNotification").append("<button type='button' id ='addNotificationButton'> Add Notification </button>"); */
+		
+	});	
 	
 	$("#addClassButton").on('click', function(e){
 
