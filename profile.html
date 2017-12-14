@@ -1,12 +1,14 @@
-<!DOCTYPe html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"> 		
 		<title> Comp 426 Final Project Profile </title>
-				<script src="jquery-3.2.1.js"></script>
+				<script src="jquery-3.2.1.js"></script>	
 		<link rel="stylesheet" type="text/css" href="profile.css" >
 		<script src ="profile.js"></script>
-		<script src ="user.js"></script>
+		<script src ="js.cookie.js"></script>
+		<script src = "user.js"></script>
+		
 	</head>
 	
 	<body>
@@ -17,7 +19,8 @@
 			</div>
 		
 			<div id ="calendarLink">
-				a link to your calendar 
+				<li><a href="https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/calendar.html"> Calendar Page</a></li>
+				
 			</div>
 			
 		</div>
@@ -28,33 +31,40 @@
 		
 			<div id="profilePic">
 				
-			</div>
+				</div>
 		
 			<div id="name">
 				Name
 			</div>
 		
 			<div id="changeName">
-				<!-- <button type="button" id="changeNameButton"> Change Name </button> -->
+				<!--<button type="button" id="changeNameButton"> Change Name </button>-->
 				
 				<form id="changeNameForm">
 					Change Name: <br>
 					<input type="text" name="fname" id="fname">
 					<input type="text" name="lname" id="lname">
 					<input type="submit">
-				</form>		
-			</div>		
+				</form> 
+			</div>
 		
 			<div id="actionButtons">
 		
-			<div id="addClass">
-				<button type="button" id="addClassButton"> Add Class </button>
-			</div>
-		
-			<div id="deleteClass">
-				<button type="button" id ="deleteClassButton"> Delete Class </button>
+		<div id="addClass">
+				<form id = "NewClass" method = "post">
+				Add Class:  <input type = "text" name = "Class" value = "">
+				<input id = "newClass" type = "submit" value= "Add Class" >
+				</form>
 			</div>
 			
+			
+			<div id="deleteClass">
+					<form id = "DeleteClass" method = " ">
+				Delete Class:  <input type = "text" name = "deletedClass" value = "">
+				<input id = "delClass" type = "submit" value= "Delete Class" >
+				</form>
+			</div>
+		
 			<div id="addNotification">
 				<button type="button" id ="addNotificationButton"> Add Notification </button>
 				<form id='addNotForm'> Enter COMP Number and Section (ex: COMP 401-001): 
@@ -72,14 +82,12 @@
 					<input type="submit">
 				</form>		
 			
-			</div>			
-			
-			
-		</div>
+</div> 
 		
 		<div id="display" class ="contentBox">		
-			<div id="classList">
-				A list of your classes (classes to be notified will have a star)
+			<div id="classes">
+				A list of your classes <br>
+				
 			</div>			
 		</div>	
 		

@@ -1,6 +1,5 @@
 $(document).ready(function (){
 	
-	
 	var head = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject/";
 	
 	$.ajax(head + "profile.php",
@@ -22,12 +21,12 @@ $(document).ready(function (){
 			alert("Failed to load names");
 		}
 	}
-		);	
-		
+); 
+	
 	$("#addNotificationButton").on('click', function(e){
 			console.log("add button");
 			$("#addNotForm").css("visibility", "visible");
-	});
+});
 	
 	$("#addNotForm").on('submit', function(e){
 		e.preventDefault();
@@ -52,10 +51,6 @@ $(document).ready(function (){
 		$("#addNotification").append("<button type='button' id ='addNotificationButton'> Add Notification </button>"); */
 		
 	});	
-	
-	$("#addClassButton").on('click', function(e){
-
-	});
 	
 	$("#changeNameForm").on('submit', function(e){
 		e.preventDefault();
@@ -106,20 +101,181 @@ $(document).ready(function (){
 		
 		
 	});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	$("#addClassButton").on('click', function(e){
+	
+	if(Cookies.get('USER_LOGGEDIN') === undefined){
+        alert("Access Denied. Unauthorized access forbidden.");
+        window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/jwash/final/main.html";
+    }
+    else {
+		alert("started session");
+        var newSession = new Session();
+        newSession.start();
+	}
+	
+	$("#NewClass").on("submit", function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		alert("before ajax");
+		$.ajax({
+			type: "post",
+			url: "add_class.php",
+			data: $("#NewClass").serialize(),
+			error: function(){
+				alert("Failed to Add Class");
+			}, success: function(){
+				alert("Class Added");
+			}
+		}); 
+	})	
+	
+	$("#delClass").on("submit",function(e){
+		alert("went into delete section");
+		e.stopPropagation();
+		e.preventDefault();
+		  $.ajax({
+            type: "POST", 
+            url: "rm_class.php", 
+            async: false, 
+            dataType: "json", 
+            data:(this).serialize(),
+            success: function(data){
+                alert("Class was removed");
+                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/profile.html"; 
+            }, 
+            error: function(){
+                alert("Could not remove class"); 
+            }
+        }); 
+			//SetUpClasses();
+        
+	}); 
+	
+	
+})
+	
+	var Session = function(){
 		
-		var name = prompt("Add Class: ");
-		
-		if(name != null){
-		
-			var classText = $("<div class='course' >" + name + "</div>");
-			$("#classList").append(classText);
-			
-		
-			
+		var classes = []; //all current classes stored here
+        var class_ids = [];
+		this.start = function(){
+						
+			 SetUpClasses(); 
+
+    /////////////////Fetch Classes from DB/////////////////////
+    
+    function SetUpClasses(){
+		$.ajax( "fetch_classes.php", {
+        type: "GET",
+        async: false,
+        dataType: "json",
+        success: function(data){
+            for(var i = 0; i < data.length; i++){
+                classes.push(JSON.stringify(data[i]));
+            }
+        },
+        error: function(data){
+            alert("Failed to Load Classes");
+        }
+            });
+
+    for(var i = 0; i < classes.length; i++){
+        classes[i] = clean_string(classes[i]);
+    }
+        
+	$.ajax("fetch_classids.php", {
+        type: "GET", 
+        async: false, 
+        dataType: "json", 
+        success: function(data){
+            for(var i = 0; i < data.length; i++){
+                class_ids.push(JSON.stringify(data[i])); 
+            }
+        }, 
+        error: function(){
+            alert("Error: Could not retrieve class IDs"); 
+        }
+}); 
+   
+    ////////////////////////////////////////////////////////
+
+    
+    /////////////////////Fill in classes////////////////////
+        
+    var class_show = $("#classes");
+    $(class_show).empty(); 
+    $(classes).each(function(){
+			var box = $('<div id="classes">' + this + '<br>');
+			box.val(this);
+		box.attr("id",this);
+            $(class_show).append(box); 
+        
+    });
+  
+	
+}
 		}
 		
-	});
+		
+	//$("#SelectAllBtn").on("click", SelectAllClasses);
+    
+    }    
+
+   /*function SelectAllClasses(){
+        var classes = $("#classes").children();
+        for(var child of classes){
+            $(child).prop("checked", true);
+        }
+    }
+       
+    function RemoveClass(){
+        
+            $.ajax({
+            type: "POST", 
+            url: "rm_class.php", 
+            async: false, 
+            dataType: "json", 
+            data: {Class:  $("#delClass").serialize()},
+            success: function(data){
+                alert("Class was removed");
+                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/profile.html"; 
+            }, 
+            error: function(){
+                alert("Could not remove class"); 
+            }
+        }); 
+			//SetUpClasses();
+        };
+    */
+        
+    function getClassByID(id){
+        var name = ""; 
+        $.ajax({
+            type: "POST", 
+            url: "fetch_oneclass.php", 
+            async: false, 
+            dataType: "json", 
+            data: {ID: id},
+            success: function(data){
+                name = clean_string(JSON.stringify(data));  
+            },
+            error: function(){
+                alert("ERROR: GETCLASSBYID-INVALID REQUEST"); 
+            }
+        });
+        return name; 
+    }
+
+    function clean_string(string){
+        return string.replace(/[\[\]]+/g, "").replace(/"/g, "");
+    }
+
+
+
 	
-});
+	
+
+
+
