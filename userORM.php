@@ -22,16 +22,14 @@ class User{
 			if($result-> num_rows ==0){
 				die("Error");
 			}
+			
 			$person = $result->fetch_array();
+			
 			if($person['F_Name'] == null){
 				die("Error");
 			}
 			
 			$newUser = new User($person['ID'], $person['F_Name'], $person['L_Name'], $person['pic']);
-			
-			if($person['pic'] == null){
-				die("Error");
-			}
 			
 			return $newUser;
 

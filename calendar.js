@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     if(Cookies.get('USER_LOGGEDIN') === undefined){
         alert("Access Denied. Unauthorized access forbidden.");
-        window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/jwash/final/main.html";
+        window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject2/main.html";
     }
     else {
         var newSession = new Session();
@@ -134,7 +134,7 @@ var Session = function(){
             data: {Class: cl_name},
             success: function(data){
                 alert("Class was removed");
-                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/jwash/final/calendar.html"; 
+                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject2/calendar.html"; 
             }, 
             error: function(){
                 alert("Could not remove class"); 

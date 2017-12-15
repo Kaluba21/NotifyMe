@@ -1,10 +1,10 @@
 <?php
 
-session_start();
+//session_start();
 
 require_once('userORM.php');
 
-$userName = $_SESSION['user'];
+$userName = $_COOKIE['USER_LOGGEDIN'];
 
 
 if($_SERVER['REQUEST_METHOD'] == "GET"){

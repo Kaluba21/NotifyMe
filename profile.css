@@ -6,15 +6,8 @@
 #addNotForm{
 	visibility: hidden;
 }
-
-#addClass{
-	float:left;
-}
-#deletClass{
-	float:left;
-}
-#addNotification{
-	float:left;
+#addNotifications{
+	clear:left;
 }
 
 #changePic{
@@ -27,8 +20,7 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-position: top-left;
-	
+	background-position: top-left;	
 }
 
 .contentBox{

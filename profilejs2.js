@@ -9,13 +9,12 @@ $(document).ready(function (){
 			$('#name').empty();
 			$('#name').append(user_json.f_name + " " + user_json.l_name);
 			if(user_json.pic == null){
-				$('#profilePic').append("<img src='Snow4.JPG' alt='Profile Picture' height='150px' width='150px' >")
+				$('#profilePic').append("<img src='Snow4.JPG' alt='Profile Picture' height='150px' width='150px' >");
 		}else{
-				$('#profilePic').append("<img src='"+ user_json.pic + "' alt='Profile Picture' height='150px' width='150px' >")
+				$('#profilePic').append("<img src='"+ user_json.pic + "' alt='Profile Picture' height='150px' width='150px' >");
 			}
 		},
 		error: function(user_json){
-			alert("Failed to load names");
 		}
 	}
 ); 
@@ -65,10 +64,8 @@ $(document).ready(function (){
 		dataType: "json",
 		data: $(this).serialize(),
 		success: function(){
-			alert("Name Changed");
 		},
 		error: function(){
-			alert("Name Failed to Change");
 		}
 	}			
 		);
@@ -83,10 +80,8 @@ $(document).ready(function (){
 		dataType: "json",
 		data: $(this).serialize(),
 		success: function(){
-			alert("Picture Changed");
 		},
 		error: function(){
-			alert("Picture Failed to Change");
 		}
 	}			
 		);
@@ -104,10 +99,9 @@ $(document).ready(function (){
 	
 	if(Cookies.get('USER_LOGGEDIN') === undefined){
         alert("Access Denied. Unauthorized access forbidden.");
-        window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/jwash/final/main.html";
+        window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject2/main.html";
     }
     else {
-		alert("started session");
         var newSession = new Session();
         newSession.start();
 	}
@@ -115,21 +109,20 @@ $(document).ready(function (){
 	$("#NewClass").on("submit", function(e){
 		e.stopPropagation();
 		e.preventDefault();
-		alert("before ajax");
 		$.ajax({
 			type: "post",
 			url: "add_class.php",
 			data: $("#NewClass").serialize(),
 			error: function(){
 				alert("Failed to Add Class");
-			}, success: function(){
+			}, success: function(json){
 				alert("Class Added");
+				$("#classes").append(getClassByID(json.id) + "<br>");
 			}
 		}); 
 	})	
 	
-	$("#delClass").on("submit",function(e){
-		alert("went into delete section");
+	/*$("#DeleteClass").on("submit",function(e){
 		e.stopPropagation();
 		e.preventDefault();
 		  $.ajax({
@@ -137,10 +130,10 @@ $(document).ready(function (){
             url: "rm_class.php", 
             async: false, 
             dataType: "json", 
-            data:(this).serialize(),
+            data: $(this).serialize(),
             success: function(data){
                 alert("Class was removed");
-                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/profile.html"; 
+                window.location.href = "https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject2/profile.html"; 
             }, 
             error: function(){
                 alert("Could not remove class"); 
@@ -148,7 +141,7 @@ $(document).ready(function (){
         }); 
 			//SetUpClasses();
         
-	}); 
+	}); */
 	
 	
 })
@@ -248,6 +241,7 @@ $(document).ready(function (){
     */
         
     function getClassByID(id){
+		console.log("id: " + id);
         var name = ""; 
         $.ajax({
             type: "POST", 
@@ -262,6 +256,7 @@ $(document).ready(function (){
                 alert("ERROR: GETCLASSBYID-INVALID REQUEST"); 
             }
         });
+		console.log("Name: " + name);
         return name; 
     }
 

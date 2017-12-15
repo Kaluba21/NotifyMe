@@ -38,7 +38,7 @@ if(!$check_duplicates){
 else {
 
         if($check_duplicates->num_rows == 0){
-                $insert_new_user = mysqli_query($conn, "INSERT INTO `F.User` VALUES(NULL, '$F_name', '$L_name', '$username', '$password', '$email', '$phone', NULL)");
+                $insert_new_user = mysqli_query($conn, "INSERT INTO `F.User` VALUES(NULL, '$F_name', '$L_name', '$username', '$password', '$email', '$phone', 'NULL')");
                 if(!$insert_new_user){
                         die("Error: " . mysqli_error($conn));
                 }

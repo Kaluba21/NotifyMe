@@ -5,9 +5,8 @@
 		<title> Comp 426 Final Project Profile </title>
 				<script src="jquery-3.2.1.js"></script>	
 		<link rel="stylesheet" type="text/css" href="profile.css" >
-		<script src ="profile.js"></script>
+		<script src ="profilejs2.js"></script>
 		<script src ="js.cookie.js"></script>
-		<script src = "user.js"></script>
 		
 	</head>
 	
@@ -19,7 +18,7 @@
 			</div>
 		
 			<div id ="calendarLink">
-				<li><a href="https://wwwp.cs.unc.edu/Courses/comp426-f17/users/carriems/finalproj/calendar.html"> Calendar Page</a></li>
+				<li><a href="https://wwwp.cs.unc.edu/Courses/comp426-f17/users/meganjn/finalProject2/calendar.html"> Calendar Page</a></li>
 				
 			</div>
 			
@@ -41,7 +40,7 @@
 				<!--<button type="button" id="changeNameButton"> Change Name </button>-->
 				
 				<form id="changeNameForm">
-					Change Name: <br>
+					Add or Change Name: <br>
 					<input type="text" name="fname" id="fname">
 					<input type="text" name="lname" id="lname">
 					<input type="submit">
@@ -52,37 +51,38 @@
 		
 		<div id="addClass">
 				<form id = "NewClass" method = "post">
-				Add Class:  <input type = "text" name = "Class" value = "">
+				Add Class (ex: COMP 401-001): <br> <input type = "text" name = "Class" value = "">
 				<input id = "newClass" type = "submit" value= "Add Class" >
 				</form>
 			</div>
 			
 			
-			<div id="deleteClass">
+			<!--<div id="deleteClass">
 					<form id = "DeleteClass" method = " ">
-				Delete Class:  <input type = "text" name = "deletedClass" value = "">
+				Delete Class (ex: COMP 401-001): <br> <input type = "text" name = "Class" value = "">
 				<input id = "delClass" type = "submit" value= "Delete Class" >
 				</form>
-			</div>
+			</div> -->
 		
-			<div id="addNotification">
-				<button type="button" id ="addNotificationButton"> Add Notification </button>
-				<form id='addNotForm'> Enter COMP Number and Section (ex: COMP 401-001): 
-					<input type='text' name='addNot' id='addNot'> 
-					<input type='submit'>
-				</form>"
-			</div>
-				
+					
 			</div>
 			<div id="changePic">
 			<form id="changePicForm">
-					Change Profile Picture! <br>
+					Add or Change Profile Picture! <br>
 					Add a link:  
 					<input type="text" name="newPic" id="newPic">
 					<input type="submit">
 				</form>		
 			
-</div> 
+			</div> 
+			
+			<div id="addNotification">
+				<button type="button" id ="addNotificationButton"> Add Notification </button>
+				<form id='addNotForm'> Enter COMP Number and Section (ex: COMP 401-001): 
+					<input type='text' name='addNot' id='addNot'> 
+					<input type='submit'>
+				</form>
+			</div>
 		
 		<div id="display" class ="contentBox">		
 			<div id="classes">
